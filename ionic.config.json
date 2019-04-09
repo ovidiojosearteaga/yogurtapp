@@ -1,6 +1,8 @@
 {
   "name": "yogurt",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "d99ea85f"
 }

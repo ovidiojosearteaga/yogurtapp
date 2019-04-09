@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-back-button slot="start" text=""></ion-back-button>
+    <ion-title>Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="showData">
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-img src="{{data.images[0].src}}"></ion-img>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>{{data.name}}</h2>
+            <p>Precio Unitario: ${{(data.regular_price *1).toLocaleString('de-DE')}}</p>
+            <p>Stock: {{(data.stock_quantity *1).toLocaleString('de-DE')}}</p>
+          </ion-card-content>
+        </ion-card>  
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="data.stock_quantity > 0">
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Unidades</ion-label>
+          <ion-input [(ngModel)]="count" type="number" name="count" id="cound"></ion-input>
+        </ion-item>
+        <ion-button expand="full" shape="" (click)="setProdutToOrder()">Agregar a Orden</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="data.stock_quantity <= 0">
+        <ion-col size="12">
+          <p>
+            <ion-text color="danger">* No existen unidades.</ion-text>
+          </p>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>

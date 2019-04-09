@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-back-button slot="start" text=""></ion-back-button>
+    <ion-title>Clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let customer of customerList" (click)="setCustomerToOrder(customer)">
+      <ion-label>
+        <h3>{{customer.name}}</h3>
+        <p>{{customer.cedula}}</p>
+      </ion-label>      
+    </ion-item>
+  </ion-list>
+</ion-content>

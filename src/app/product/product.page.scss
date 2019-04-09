@@ -1,0 +1,30 @@
+ion-content {
+  text-align: center;
+
+  ion-grid {
+    ion-row {
+      ion-col {
+        ion-card {
+          margin-top: 14px;
+
+          ion-card-header {
+            padding: 0;
+          }
+
+          ion-card-content {
+            padding-top: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+  }
+}
