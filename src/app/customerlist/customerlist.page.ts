@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { UserdataService } from '../userdata.service';
 import { Router } from '@angular/router';
 import { OrderService } from '../order.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-customerlist',
@@ -21,6 +22,7 @@ export class CustomerlistPage implements OnInit {
     public userData : UserdataService,
     public router : Router,
     public order : OrderService,
+    private storage : Storage,
   ) { 
     this.getCustomers();
   }
@@ -30,7 +32,8 @@ export class CustomerlistPage implements OnInit {
 
   getCustomers()
   {
-    this.wpRestApi.getWordpressUserByRole('cliente', this.userData.getTokenCode())
+    this.storage.get('TOKEN').then(token => {
+      this.wpRestApi.getWordpressUserByRole('cliente', token.token)
       .then( data => {
         this.customerList = data;
         this.showList = true;
@@ -38,6 +41,7 @@ export class CustomerlistPage implements OnInit {
       .catch( err => {
         console.log(err);
       });
+    });
   }
 
   setCustomerToOrder(customer:any) 

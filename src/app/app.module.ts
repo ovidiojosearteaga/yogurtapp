@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
     AppRoutingModule,
     HttpClientModule,
     JwtModule,
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,

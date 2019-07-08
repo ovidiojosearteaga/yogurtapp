@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoadingServiceService } from '../loading-service.service';
 import { WpRestApiService } from '../wp-rest-api.service';
 import { UserdataService } from '../userdata.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-welcome',
@@ -16,6 +17,7 @@ export class WelcomePage implements OnInit {
   private password:string = '12341234';
   private showErrorMessage:boolean = false;
   private loginErrorMessage:boolean = false;
+  private showLogin:boolean = false;
   private token:any;
 
   constructor(
@@ -24,9 +26,29 @@ export class WelcomePage implements OnInit {
     public userData : UserdataService,
     public nav : NavController,
     public router : Router,
+    private storage : Storage,
     
   ) 
   { 
+    this.verifyAccess();
+  }
+
+  verifyAccess() 
+  {
+    //this.storage.remove('TOKEN');
+    
+    this.storage.get('TOKEN').then( token => {
+      if (token !== null ) {
+        this.userData.setToken(token);
+        this.userData.setUserData().then(() => {
+          this.goToMainPage();
+        });
+        
+      } else {
+        this.showLogin = true;
+      }
+    });
+    
   }
 
   ngOnInit() {

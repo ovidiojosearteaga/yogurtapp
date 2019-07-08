@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { WpRestApiService } from './wp-rest-api.service';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserdataService {
 
   constructor(
     public wpRest : WpRestApiService,
+    private storage: Storage
   ) { }
 
   getUserId():number
@@ -39,9 +41,10 @@ export class UserdataService {
   setToken(token:any)
   {
     this.token = token;
+    this.storage.set('TOKEN', this.token);
   }
 
-  setUserData()
+  async setUserData()
   {
     this.setTokenCode(this.token.token);
     const JWT = new JwtHelperService();
@@ -51,13 +54,14 @@ export class UserdataService {
       .then(
         data => {
           this.data = data;
+          this.storage.set('USER_DATA', this.data);
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  getUserData()
+  async getUserData()
   {
     return this.data;
   }

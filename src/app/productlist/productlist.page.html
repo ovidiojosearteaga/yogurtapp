@@ -9,6 +9,7 @@
 </ion-header>
 
 <ion-content>
+  <!--
   <ion-list>
     <ion-item *ngFor="let product of productList">
       <ion-label text-wrap >
@@ -16,8 +17,27 @@
           <h2>{{product.name}}</h2>
         </ion-text>
         <p>Stock: {{(product.stock_quantity * 1).toLocaleString('de-DE')}}</p>
+        <ion-badge>$ {{(product.regular_price *1).toLocaleString('de-DE')}}</ion-badge>
+        <p>
+          <ion-button expand="full">Agregar</ion-button>
+        </p>
       </ion-label>
-      <ion-badge slot="end">${{(product.regular_price *1).toLocaleString('de-DE')}} /U.</ion-badge>
     </ion-item>
   </ion-list>
+  -->
+  <ion-card *ngFor="let product of productList"> 
+    <ion-card-header>
+      <ion-card-title>
+          <ion-text color="primary">
+            {{product.name}}
+          </ion-text>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-badge>$ {{(product.regular_price *1).toLocaleString('de-DE')}}</ion-badge>
+      <p>Stock: {{(product.stock_quantity * 1).toLocaleString('de-DE')}}</p> 
+      <ion-input type="number" [(ngModel)]="product.count"></ion-input>
+      <ion-button expand="full" (click)="setProductToOrder(product)">Agregar</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
