@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WpRestApiService } from '../wp-rest-api.service';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { UserdataService } from '../userdata.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
@@ -22,11 +22,22 @@ export class ProductlistPage implements OnInit {
     public router : Router,
     private storage: Storage,
     public order : OrderService,
+    public toastCtrl: ToastController,
   ) { 
     this.getProductList();
   }
 
   ngOnInit() {
+  }
+
+  async showToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Producto cargado correctamente',
+      duration: 1500,
+      showCloseButton: true,
+     closeButtonText: 'Ok',
+    });
+    toast.present();
   }
 
   getProductList()
@@ -53,7 +64,7 @@ export class ProductlistPage implements OnInit {
 
   setProductToOrder(product:any) {
     this.order.setProductToList(product);
-
+    this.showToast();
     if (product.count > product.stock_quantity) {
       console.log('no se puede')
     } else {
