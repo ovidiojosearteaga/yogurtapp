@@ -27,17 +27,17 @@ export class MainPage implements OnInit {
 
   goToProductList()
   {
-    this.nav.navigateForward('productlist');
+    this.nav.navigateForward('/tabs/products');
   }
 
   goToCreateOrder()
   {
-    this.nav.navigateForward('createorder');
+    this.nav.navigateForward('/tabs/createorder');
   }
 
   goToCustomerList()
   {
-    this.nav.navigateForward('customerlist');
+    this.nav.navigateForward('/tabs/customerlist');
   }
 
 }

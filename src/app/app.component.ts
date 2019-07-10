@@ -12,32 +12,32 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Panel',
-      url: '/main',
+      url: '/tabs/main',
       icon: 'home'
     },
     {
       title: 'Productos',
-      url: '/productlist',
+      url: '/tabs/products',
       icon: 'cube'
     },
     {
       title: 'Crear Pedido',
-      url: '/createorder',
+      url: '/tabs/createorder',
       icon: 'cart'
     },
     {
       title: 'Mis Ventas',
-      url: '/createorder',
+      url: '/tabs/createorder',
       icon: 'stats'
     },
     {
       title: 'Clientes',
-      url: '/customerlist',
+      url: '/tabs/customerlist',
       icon: 'body'
     },
     {
       title: 'Mis Datos',
-      url: '/createorder',
+      url: '/tabs/createorder',
       icon: 'people'
     }
   ];

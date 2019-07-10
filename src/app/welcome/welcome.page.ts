@@ -35,7 +35,7 @@ export class WelcomePage implements OnInit {
 
   verifyAccess() 
   {
-    //this.storage.remove('TOKEN');
+    this.storage.remove('TOKEN');
     
     this.storage.get('TOKEN').then( token => {
       if (token !== null ) {
@@ -98,7 +98,7 @@ export class WelcomePage implements OnInit {
 
   goToMainPage()
   {
-    this.nav.navigateRoot('main');
+    this.nav.navigateRoot('tabs');
   }
 
 }
