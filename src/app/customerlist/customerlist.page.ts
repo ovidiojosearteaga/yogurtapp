@@ -52,7 +52,7 @@ export class CustomerlistPage implements OnInit {
 
   goToCreateOrder()
   {
-    this.nav.navigateForward('createorder');
+    this.nav.navigateForward('/tabs/createorder');
   }
 
 }

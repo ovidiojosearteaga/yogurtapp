@@ -61,4 +61,16 @@ export class OrderService {
   {
     return this.productList;
   }
+
+  removeProduct(id:number) {
+    this.productList.forEach((el, i) => {
+      if (el.id == id)
+        this.productList.splice(i, 1);
+    });
+
+    this.calculateOrderTotal()
+    this.calculateOrderUnitTotal();
+  }
+
+
 }

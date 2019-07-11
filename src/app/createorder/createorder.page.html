@@ -42,6 +42,11 @@
             <p>Cost.U.: ${{(product.regular_price * 1).toLocaleString('de-DE')}}</p>
             <p>Cantidad: {{(product.count * 1).toLocaleString('de-DE')}}</p>
             <p>Total: ${{(product.count * product.regular_price).toLocaleString('de-DE')}}</p>
+            <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="order.removeProduct(product.id)">
+              <ion-fab-button>
+                <ion-icon name="trash"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
           </ion-label>
         </ion-card>
       </ion-col>

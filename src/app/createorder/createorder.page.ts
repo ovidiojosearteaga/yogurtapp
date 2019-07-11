@@ -26,14 +26,12 @@ export class CreateorderPage implements OnInit {
   ngOnInit() {
   }
 
-  goToCustomerList()
-  {
-    this.nav.navigateForward('customerlist');
+  goToCustomerList() {
+    this.nav.navigateForward('/tabs/customerlist');
   }
 
-  goToProductList()
-  {
-    this.nav.navigateForward('productlist');
+  goToProductList() {
+    this.nav.navigateForward('/tabs/products');
   }
 
 }
