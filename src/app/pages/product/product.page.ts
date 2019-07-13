@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { WpRestApiService } from '../../wp-rest-api.service';
+import { WpRestApiService } from '../../services/wp-rest-api/wp-rest-api.service';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-import { UserdataService } from '../../userdata.service';
-import { OrderService } from '../../order.service';
-import { AlertService } from '../../alert.service';
+import { UserdataService } from '../../services/userdata/userdata.service';
+import { OrderService } from '../../services/order/order.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 
 @Component({

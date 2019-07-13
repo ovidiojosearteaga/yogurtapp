@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { LoadingServiceService } from '../../loading-service.service';
-import { WpRestApiService } from '../../wp-rest-api.service';
-import { UserdataService } from '../../userdata.service';
+import { LoadingServiceService } from '../../services/loading-service/loading-service.service';
+import { WpRestApiService } from '../../services/wp-rest-api/wp-rest-api.service';
+import { UserdataService } from '../../services/userdata/userdata.service';
 import { Storage } from '@ionic/storage';
 
 @Component({
