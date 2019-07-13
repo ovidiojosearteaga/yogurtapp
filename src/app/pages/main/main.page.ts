@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { UserdataService } from '../userdata.service';
+import { UserdataService } from '../../userdata.service';
 import { Storage } from '@ionic/storage';
 
 @Component({

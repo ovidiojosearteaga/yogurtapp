@@ -12,7 +12,7 @@ const routes: Routes = [
 				children: [
 					{
 						path: '',
-						loadChildren: '../main/main.module#MainPageModule'
+						loadChildren: '../pages/main/main.module#MainPageModule'
 					}
 				]
 			},
@@ -21,7 +21,7 @@ const routes: Routes = [
 				children: [
 					{
 						path: '',
-						loadChildren: '../productlist/productlist.module#ProductlistPageModule'
+						loadChildren: '../pages/productlist/productlist.module#ProductlistPageModule'
 					}
 				]
 			},
@@ -30,7 +30,7 @@ const routes: Routes = [
 				children: [
 					{
 						path: '',
-						loadChildren: '../createorder/createorder.module#CreateorderPageModule'
+						loadChildren: '../pages/createorder/createorder.module#CreateorderPageModule'
 					}
 				]
 			},
@@ -39,7 +39,7 @@ const routes: Routes = [
 				children: [
 					{
 						path: '',
-						loadChildren: '../customerlist/customerlist.module#CustomerlistPageModule'
+						loadChildren: '../pages/customerlist/customerlist.module#CustomerlistPageModule'
 					}
 				]
 			},

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { WpRestApiService } from '../wp-rest-api.service';
+import { WpRestApiService } from '../../wp-rest-api.service';
 import { NavController, ToastController } from '@ionic/angular';
-import { UserdataService } from '../userdata.service';
+import { UserdataService } from '../../userdata.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { OrderService } from '../order.service';
+import { OrderService } from '../../order.service';
 
 @Component({
   selector: 'app-productlist',
