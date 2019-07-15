@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { WpRestApiService } from '../wp-rest-api/wp-rest-api.service';
+import { UserdataService } from '../userdata/userdata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,10 @@ export class OrderService {
   private orderTotal:number = 0;
   private orderUnitTotal:number = 0;
   
-  constructor() { 
+  constructor(
+    private wpRest: WpRestApiService,
+    private userData: UserdataService,
+  ) { 
     this.productList = [];
   }
 
@@ -70,6 +75,17 @@ export class OrderService {
 
     this.calculateOrderTotal()
     this.calculateOrderUnitTotal();
+  }
+
+  async createOrder(data:any)  
+  {
+    return this.wpRest.setWoocommerceOrder(data, this.userData.getTokenCode())
+      .then(result => {
+        return result;
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
 

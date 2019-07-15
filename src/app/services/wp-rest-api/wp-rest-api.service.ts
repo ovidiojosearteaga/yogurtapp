@@ -71,6 +71,21 @@ export class WpRestApiService {
     });
   }
 
+  setWoocommerceOrder(data:any, token:string)
+  {
+    return new Promise(resolve => {
+      this.http.post(
+        this.apiUrl+'wc/v3/orders',
+        data,
+        { headers: new HttpHeaders().set('Authorization', 'Bearer '+token) }
+      ).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
   getWordpressUserByRole(role:string, token:string)
   {
     return new Promise(resolve => {
@@ -79,6 +94,20 @@ export class WpRestApiService {
         {
           headers: new HttpHeaders().set('Authorization', 'Bearer '+token),
         }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      })
+    });
+  }
+
+  getWoocommerceCustomer(id:number, token:string)
+  {
+    return new Promise(resolve => {
+      this.http.get(
+        this.apiUrl+'wc/v3/customers'+id,
+        { headers: new HttpHeaders().set('Authorization', 'Bearer '+token)}
+      ).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
