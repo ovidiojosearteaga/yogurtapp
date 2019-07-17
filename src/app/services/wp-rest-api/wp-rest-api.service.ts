@@ -8,7 +8,8 @@ import { catchError, tap, map } from 'rxjs/operators';
 })
 export class WpRestApiService {
 
-  apiUrl = 'http://localhost:8080/wp-json/';
+  //apiUrl = 'http://localhost:8080/wp-json/';
+  apiUrl = 'http://localhost:8087/wp-json/';
   //apiUrl  = 'http://applacteoselportillo.com/wp-json/';
 
   constructor(
@@ -94,20 +95,6 @@ export class WpRestApiService {
         {
           headers: new HttpHeaders().set('Authorization', 'Bearer '+token),
         }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      })
-    });
-  }
-
-  getWoocommerceCustomer(id:number, token:string)
-  {
-    return new Promise(resolve => {
-      this.http.get(
-        this.apiUrl+'wc/v3/customers'+id,
-        { headers: new HttpHeaders().set('Authorization', 'Bearer '+token)}
-      ).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

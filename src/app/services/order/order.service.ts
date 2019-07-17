@@ -77,9 +77,33 @@ export class OrderService {
     this.calculateOrderUnitTotal();
   }
 
-  async createOrder(data:any)  
+  async createOrder()  
   {
-    return this.wpRest.setWoocommerceOrder(data, this.userData.getTokenCode())
+    let orderData:any = {
+      "set_paid": true,
+      "billing": {
+        "first_name": this.customerData.billing_first_name,
+        "last_name": this.customerData.billing_last_name,
+        "address_1": this.customerData.billing_address_1,
+        "address_2": this.customerData.billing_adders_2,
+        "city": this.customerData.billing_city,
+        "state": this.customerData.billing_state,
+        "postcode": this.customerData.billing_postcode,
+        "country": this.customerData.billing_country,
+        "email": this.customerData.billing_email,
+        "phone": this.customerData.billing_phone
+      },
+      "line_items": []
+    };
+
+    this.productList.forEach( p => {
+      orderData.line_items.push({
+        "product_id": p.id,
+        "quantity": p.count
+      });
+    });
+
+    return this.wpRest.setWoocommerceOrder(orderData, this.userData.getTokenCode())
       .then(result => {
         return result;
       })
