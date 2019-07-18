@@ -71,6 +71,7 @@ export class ProductPage implements OnInit {
 
   orderHaveProduct() 
   {
+    console.log('me llamaron');
     let haveProduct = false;
 
     this.order.getProductList().forEach(product => {
