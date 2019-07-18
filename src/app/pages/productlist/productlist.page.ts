@@ -5,6 +5,8 @@ import { UserdataService } from '../../services/userdata/userdata.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { OrderService } from '../../services/order/order.service';
+import { AlertService } from '../../services/alert/alert.service';
+import { ProductPageModule } from '../product/product.module';
 
 @Component({
   selector: 'app-productlist',
@@ -23,6 +25,7 @@ export class ProductlistPage implements OnInit {
     private storage: Storage,
     public order : OrderService,
     public toastCtrl: ToastController,
+    private alert: AlertService,
   ) { 
     this.getProductList();
   }
@@ -48,6 +51,8 @@ export class ProductlistPage implements OnInit {
         this.productList = data;
 
         this.productList.forEach(element => {
+          element.totalCount = 0;
+
           if (element.stock_quantity < 1){
             element.count = 0;
           } else {
@@ -63,13 +68,46 @@ export class ProductlistPage implements OnInit {
   }
 
   setProductToOrder(product:any) {
-    this.order.setProductToList(product);
-    this.showToast();
     if (product.count > product.stock_quantity) {
-      console.log('no se puede')
-    } else {
-      //this.gotToCreateOrder();
+      this.alert.present('La cantidad supera la disponibilidad en stock.');
+      return;
     }
+
+    if (this.orderHaveProduct(product)) {
+      this.increaseProduct(product);
+
+    } else {
+      product.totalCount = product.count;
+      product.stock_quantity -= product.count;
+      this.order.setProductToList(product);
+      product.count = 1;
+      this.showToast();
+    }
+  }
+
+  orderHaveProduct(product:any) 
+  {
+    let haveProduct = false;
+
+    this.order.getProductList().forEach(p => {
+      if (p.id == product.id)
+        haveProduct = true;
+    });
+
+    return haveProduct;
+  }
+
+  increaseProduct(product:any)
+  {
+    this.order.getProductList().forEach(p => {
+      if (p.id == product.id){
+        p.totalCount += product.count;
+        p.stock_quantity -= product.count;
+        p.count = 1;
+      }
+    });
+
+    this.showToast();
   }
 
   gotToCreateOrder()

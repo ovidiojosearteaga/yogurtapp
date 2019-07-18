@@ -40,7 +40,7 @@
           <ion-label>
             <h3>{{product.name}}</h3>
             <p>Cost.U.: ${{(product.regular_price * 1).toLocaleString('de-DE')}}</p>
-            <p>Cantidad: {{(product.count * 1).toLocaleString('de-DE')}}</p>
+            <p>Cantidad: {{(product.totalCount * 1).toLocaleString('de-DE')}}</p>
             <p>Total: ${{(product.count * product.regular_price).toLocaleString('de-DE')}}</p>
             <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="order.removeProduct(product.id)">
               <ion-fab-button>
@@ -58,7 +58,7 @@
       </ion-col>
       -->
       <ion-col>
-        <ion-button expand="full" shape="" (click)="createOrder()">Guardar Orden</ion-button>
+        <ion-button *ngIf="haveCustomer() == true && order.getProductList().length > 0" expand="full" shape="" (click)="createOrder()">Guardar Orden</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
