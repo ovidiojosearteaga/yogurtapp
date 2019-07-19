@@ -65,4 +65,8 @@ export class UserdataService {
   {
     return this.data;
   }
+
+  async recoveryPassword(username:string) {
+    console.log(username);
+  }
 }

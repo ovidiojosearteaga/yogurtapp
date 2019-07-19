@@ -5,6 +5,7 @@ import { LoadingServiceService } from '../../services/loading-service/loading-se
 import { WpRestApiService } from '../../services/wp-rest-api/wp-rest-api.service';
 import { UserdataService } from '../../services/userdata/userdata.service';
 import { Storage } from '@ionic/storage';
+import { AlertService } from "../../services/alert/alert.service";
 
 @Component({
   selector: 'app-welcome',
@@ -27,6 +28,7 @@ export class WelcomePage implements OnInit {
     public nav : NavController,
     public router : Router,
     private storage : Storage,
+    private alert: AlertService,
     
   ) 
   { 
@@ -99,6 +101,11 @@ export class WelcomePage implements OnInit {
   goToMainPage()
   {
     this.nav.navigateRoot('tabs');
+  }
+
+  recoveryPassword()
+  {
+    this.alert.recoveryPassword();
   }
 
 }
