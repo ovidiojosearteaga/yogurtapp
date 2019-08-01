@@ -5,6 +5,7 @@ import { UserdataService } from '../../services/userdata/userdata.service';
 import { Router } from '@angular/router';
 import { OrderService } from '../../services/order/order.service';
 import { Storage } from '@ionic/storage';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-customerlist',
@@ -23,7 +24,9 @@ export class CustomerlistPage implements OnInit {
     public router : Router,
     public order : OrderService,
     private storage : Storage,
+    private loading : LoadingService,
   ) { 
+    this.loading.present('Cargando clientes...');
     this.getCustomers();
   }
 
@@ -37,6 +40,7 @@ export class CustomerlistPage implements OnInit {
       .then( data => {
         this.customerList = data;
         this.showList = true;
+        this.loading.dismiss();
       })
       .catch( err => {
         console.log(err);

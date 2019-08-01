@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { OrderService } from '../../services/order/order.service';
 import { AlertService } from '../../services/alert/alert.service';
+import { LoadingService } from '../../services/loading/loading.service';
 import { ProductPageModule } from '../product/product.module';
 
 @Component({
@@ -26,7 +27,9 @@ export class ProductlistPage implements OnInit {
     public order : OrderService,
     public toastCtrl: ToastController,
     private alert: AlertService,
+    private loading: LoadingService
   ) { 
+    this.loading.present('Cargando productos...');
     this.getProductList();
   }
 
@@ -60,6 +63,8 @@ export class ProductlistPage implements OnInit {
           }
             
         });
+       
+        this.loading.dismiss();
       })
       .catch(err => {
         console.log(err);

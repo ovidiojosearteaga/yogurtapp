@@ -8,8 +8,8 @@ import { catchError, tap, map } from 'rxjs/operators';
 })
 export class WpRestApiService {
 
-  //apiUrl = 'http://localhost:8080/wp-json/';
-  apiUrl = 'http://localhost:8087/wp-json/';
+  apiUrl = 'http://localhost:8080/wp-json/';
+  //apiUrl = 'http://localhost:8087/wp-json/';
   //apiUrl  = 'http://applacteoselportillo.com/wp-json/';
 
   constructor(

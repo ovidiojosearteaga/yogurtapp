@@ -5,7 +5,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 @Injectable({
   providedIn: 'root'
 })
-export class LoadingServiceService {
+export class LoadingService {
 
   isLoading:Boolean = false;
 

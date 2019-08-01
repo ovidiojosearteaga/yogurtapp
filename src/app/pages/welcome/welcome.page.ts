@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { LoadingServiceService } from '../../services/loading-service/loading-service.service';
+import { LoadingService } from '../../services/loading/loading.service';
 import { WpRestApiService } from '../../services/wp-rest-api/wp-rest-api.service';
 import { UserdataService } from '../../services/userdata/userdata.service';
 import { Storage } from '@ionic/storage';
@@ -22,7 +22,7 @@ export class WelcomePage implements OnInit {
   private token:any;
 
   constructor(
-    public loading : LoadingServiceService,
+    public loading : LoadingService,
     public wpRestApi : WpRestApiService,
     public userData : UserdataService,
     public nav : NavController,
